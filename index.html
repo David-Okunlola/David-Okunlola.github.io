@@ -1,0 +1,449 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>David A. Okunlola</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single-column academic homepage, sticky anchor nav, 2-col grids that stack on phones. Lexis-diagram motif in hero. */
+:root{
+  --paper:#F4F6F8; --surface:#FFFFFF; --ink:#17212B; --muted:#56626F; --rule:#D7DDE4;
+  --accent:#0E6655; --accent-2:#9A5F14; --accent-soft:#E1EFEB;
+  --f-display:"Newsreader", "Iowan Old Style", Georgia, serif;
+  --f-body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --maxw:68rem;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0F151B; --surface:#161E26; --ink:#E4E9EE; --muted:#9BA7B3; --rule:#27323D;
+  --accent:#5CC2A8; --accent-2:#E0A856; --accent-soft:#15302A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0F151B; --surface:#161E26; --ink:#E4E9EE; --muted:#9BA7B3; --rule:#27323D;
+  --accent:#5CC2A8; --accent-2:#E0A856; --accent-soft:#15302A; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:1rem;line-height:1.6;padding-inline:16px}
+a{color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px;border-radius:3px}
+.wrap{max-width:var(--maxw);margin-inline:auto}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;text-wrap:balance;line-height:1.15;margin:0}
+p{margin:0}
+.label{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* nav */
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);margin-inline:-16px;padding-inline:16px}
+nav.top .wrap{display:flex;align-items:center;gap:1.25rem;padding-block:.7rem;overflow-x:auto;scrollbar-width:none}
+nav.top .wrap::-webkit-scrollbar{display:none}
+nav.top .home{font-family:var(--f-display);font-size:1.1rem;color:var(--ink);text-decoration:none;white-space:nowrap;margin-right:auto}
+nav.top a.l{font-size:.85rem;color:var(--muted);text-decoration:none;white-space:nowrap}
+nav.top a.l:hover{color:var(--accent)}
+
+/* hero */
+header.hero{padding-block:3.5rem 3rem;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:3rem;align-items:center}
+.hero h1{font-size:clamp(2.4rem,6vw,3.9rem);letter-spacing:-.01em}
+.hero .role{margin-top:.9rem;font-size:1.05rem;color:var(--muted);max-width:40rem}
+.hero .thesis{margin-top:1.4rem;font-family:var(--f-display);font-size:clamp(1.25rem,2.4vw,1.55rem);line-height:1.35;max-width:36rem}
+.hero .thesis em{font-style:italic;color:var(--accent)}
+.links{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.6rem}
+.links a{font-size:.85rem;text-decoration:none;border:1px solid var(--rule);padding:.35rem .75rem;border-radius:999px;color:var(--ink);background:var(--surface)}
+.links a:hover{border-color:var(--accent);color:var(--accent)}
+.links a.primary{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.links a.primary:hover{color:var(--paper);opacity:.9}
+figure.lexis{margin:0;justify-self:end;width:100%;max-width:300px}
+figure.lexis svg{width:100%;height:auto;display:block}
+figure.lexis figcaption{margin-top:.5rem;font-family:var(--f-mono);font-size:.7rem;color:var(--muted);letter-spacing:.04em}
+
+/* sections */
+section{padding-block:3rem;border-top:1px solid var(--rule)}
+.sec-head{display:grid;grid-template-columns:12rem minmax(0,1fr);gap:2rem;align-items:baseline;margin-bottom:1.75rem}
+.sec-head h2{font-size:clamp(1.6rem,3vw,2.1rem)}
+.sec-body{display:grid;grid-template-columns:12rem minmax(0,1fr);gap:2rem}
+.sec-body > .main{min-width:0}
+.prose p + p{margin-top:1rem}
+.prose{max-width:42rem}
+
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem}
+.stream{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1.4rem 1.5rem;display:flex;flex-direction:column;gap:.7rem;min-width:0}
+.stream h3{font-size:1.3rem}
+.stream ul{margin:0;padding-left:1.1rem;color:var(--muted);font-size:.95rem}
+.stream ul li + li{margin-top:.25rem}
+.tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.tag{font-family:var(--f-mono);font-size:.7rem;padding:.15rem .5rem;border-radius:3px;background:var(--accent-soft);color:var(--accent)}
+
+.diss{border-left:3px solid var(--accent-2);padding:.25rem 0 .25rem 1.25rem;max-width:44rem}
+.diss h3{font-size:1.45rem}
+.diss p{margin-top:.6rem}
+.meta{font-family:var(--f-mono);font-size:.78rem;color:var(--muted);margin-top:.8rem;display:flex;flex-wrap:wrap;gap:.4rem 1.2rem}
+
+/* talks */
+.talk{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem;padding-block:1.6rem;border-bottom:1px dashed var(--rule)}
+.talk:first-child{padding-top:0}
+.talk:last-child{border-bottom:0;padding-bottom:0}
+.talk h3{font-size:1.3rem}
+.talk .venue{margin-top:.5rem;font-size:.85rem;color:var(--muted)}
+.talk p.q{margin-top:.8rem;font-size:.95rem}
+.findings{display:flex;flex-direction:column;gap:.75rem;min-width:0}
+.find{display:grid;grid-template-columns:5.2rem minmax(0,1fr);gap:.9rem;align-items:baseline;font-size:.93rem}
+.find .n{font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-size:1rem;color:var(--accent);text-align:right;font-weight:500}
+.find .n small{display:block;font-size:.65rem;color:var(--muted);font-weight:400}
+.note{font-size:.8rem;color:var(--muted);margin-top:.4rem}
+.code-link{font-family:var(--f-mono);font-size:.78rem}
+
+/* pubs */
+.filters{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.5rem}
+.filters button{font:inherit;font-size:.82rem;border:1px solid var(--rule);background:var(--surface);color:var(--ink);padding:.3rem .8rem;border-radius:999px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.filters button .c{font-family:var(--f-mono);font-size:.7rem;opacity:.7;margin-left:.3rem}
+ol.pubs{list-style:none;margin:0;padding:0}
+ol.pubs li{display:grid;grid-template-columns:3.5rem minmax(0,1fr);gap:1rem;padding-block:.85rem;border-bottom:1px solid var(--rule)}
+ol.pubs li:last-child{border-bottom:0}
+.yr{font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-size:.85rem;color:var(--muted);padding-top:.15rem}
+.pt{font-family:var(--f-display);font-size:1.08rem;line-height:1.35}
+.pa{font-size:.85rem;color:var(--muted);margin-top:.25rem}
+.pa b{color:var(--ink);font-weight:600}
+.pj{font-size:.85rem;margin-top:.15rem}
+.pj i{color:var(--ink)}
+.badge{font-family:var(--f-mono);font-size:.65rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-2);margin-left:.4rem}
+h3.sub{font-size:1.15rem;margin-block:2rem .6rem}
+
+/* software */
+.repos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.repo{border:1px solid var(--rule);border-radius:6px;padding:1.1rem 1.2rem;background:var(--surface);display:flex;flex-direction:column;gap:.4rem;min-width:0}
+.repo.feature{grid-column:1 / -1;border-color:var(--accent)}
+.repo .rn{font-family:var(--f-mono);font-size:.95rem;font-weight:500;word-break:break-word}
+.repo p{font-size:.9rem;color:var(--muted)}
+.repo .lang{font-family:var(--f-mono);font-size:.7rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;margin-top:auto;padding-top:.3rem}
+.repo .lang::before{content:"";width:.6rem;height:.6rem;border-radius:50%;background:var(--accent-2)}
+
+/* lists */
+dl.rows{margin:0;display:grid;grid-template-columns:7.5rem minmax(0,1fr);gap:.55rem 1.25rem;font-size:.93rem}
+dl.rows dt{font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-size:.8rem;color:var(--muted);padding-top:.15rem}
+dl.rows dd{margin:0}
+dl.rows dd span{color:var(--muted)}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2.5rem}
+.cols h3{font-size:1.15rem;margin-bottom:.9rem}
+
+.contact{display:flex;flex-wrap:wrap;gap:1rem 2.5rem;font-size:.95rem}
+.contact .label{display:block;margin-bottom:.2rem}
+.email{font-family:var(--f-mono);font-size:.9rem;user-select:all}
+.copy{font:inherit;font-size:.75rem;margin-left:.5rem;border:1px solid var(--rule);background:var(--surface);color:var(--muted);border-radius:4px;padding:.1rem .45rem;cursor:pointer}
+footer{padding-block:2rem 3rem;border-top:1px solid var(--rule);font-size:.8rem;color:var(--muted)}
+
+@media (max-width:820px){
+  header.hero{grid-template-columns:1fr;gap:2rem;padding-block:2.5rem 2rem}
+  figure.lexis{justify-self:start;max-width:220px}
+  .sec-head,.sec-body{grid-template-columns:1fr;gap:.5rem}
+  .sec-body > .aside{display:none}
+  .two,.repos,.cols,.talk{grid-template-columns:1fr}
+  .talk{gap:1.2rem}
+}
+@media (max-width:480px){
+  ol.pubs li{grid-template-columns:1fr;gap:.2rem}
+  dl.rows{grid-template-columns:1fr;gap:.1rem}
+  dl.rows dd{margin-bottom:.6rem}
+}
+</style>
+
+<nav class="top" aria-label="Sections">
+  <div class="wrap">
+    <a class="home" href="#top">David A. Okunlola</a>
+    <a class="l" href="#research">Research</a>
+    <a class="l" href="#talks">Recent work</a>
+    <a class="l" href="#publications">Publications</a>
+    <a class="l" href="#software">Software</a>
+    <a class="l" href="#teaching">Teaching</a>
+    <a class="l" href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+  <header class="hero">
+    <div>
+      <p class="label">Sociology · Demography track · Florida State University</p>
+      <h1 style="margin-top:.6rem">David A. Okunlola</h1>
+      <p class="role">Ph.D. candidate in Sociology (ABD). Causal demographer working with complex national surveys in the United States and sub-Saharan Africa.</p>
+      <p class="thesis">I study how <em>violence, gender, and inequality</em> shape population health, using causal inference methods built for survey data.</p>
+      <div class="links">
+        <a class="primary" href="https://sites.google.com/view/david-a-okunlola/cv">Curriculum vitae</a>
+        <a href="https://scholar.google.com/citations?user=gsotYp0AAAAJ&amp;hl=en">Google Scholar</a>
+        <a href="https://orcid.org/0000-0003-1597-1494">ORCID</a>
+        <a href="https://github.com/DaveIpsos">GitHub</a>
+        <a href="https://www.linkedin.com/in/david-okunlola-2687a239">LinkedIn</a>
+        <a href="https://www.researchgate.net/profile/David-Okunlola">ResearchGate</a>
+      </div>
+    </div>
+    <figure class="lexis" aria-label="Decorative Lexis diagram">
+      <svg viewBox="0 0 240 240" role="img" aria-hidden="true">
+        <g stroke="var(--rule)" stroke-width="1" fill="none">
+          <rect x="30" y="10" width="200" height="200"/>
+          <line x1="70" y1="10" x2="70" y2="210"/><line x1="110" y1="10" x2="110" y2="210"/><line x1="150" y1="10" x2="150" y2="210"/><line x1="190" y1="10" x2="190" y2="210"/>
+          <line x1="30" y1="50" x2="230" y2="50"/><line x1="30" y1="90" x2="230" y2="90"/><line x1="30" y1="130" x2="230" y2="130"/><line x1="30" y1="170" x2="230" y2="170"/>
+        </g>
+        <g stroke="var(--muted)" stroke-width="1" opacity=".55" fill="none">
+          <line x1="30" y1="90" x2="110" y2="10"/><line x1="30" y1="130" x2="150" y2="10"/><line x1="30" y1="170" x2="190" y2="10"/>
+          <line x1="70" y1="210" x2="230" y2="50"/><line x1="110" y1="210" x2="230" y2="90"/><line x1="150" y1="210" x2="230" y2="130"/>
+        </g>
+        <line x1="30" y1="210" x2="230" y2="10" stroke="var(--accent)" stroke-width="2.5" fill="none"/>
+        <rect x="110" y="90" width="40" height="40" fill="var(--accent-2)" opacity=".22"/>
+        <circle cx="130" cy="110" r="3.5" fill="var(--accent-2)"/>
+        <g font-family="IBM Plex Mono, monospace" font-size="9" fill="var(--muted)">
+          <text x="30" y="226">period →</text>
+          <text x="0" y="0" transform="translate(20 210) rotate(-90)">age →</text>
+        </g>
+      </svg>
+      <figcaption>Lexis diagram · age × period, one cohort traced</figcaption>
+    </figure>
+  </header>
+
+  <section id="about">
+    <div class="sec-head"><span class="label">About</span><h2>Population health, measured carefully</h2></div>
+    <div class="sec-body">
+      <div class="aside"></div>
+      <div class="main prose">
+        <p>I am a doctoral candidate in the Department of Sociology at Florida State University, in the demography track. I trained in Demography and Social Statistics at Obafemi Awolowo University, Nigeria (B.Sc., M.Sc.) and earned an M.S. in Sociology at FSU in 2024.</p>
+        <p>My work runs along two lines. In sub-Saharan Africa, I study gender-based violence, reproductive autonomy, and maternal and child health using Demographic and Health Surveys. In the United States, I study population health and firearm access using national surveys such as BRFSS and NHIS. Across both, I focus on design-based inference and causal methods: entropy balancing, AIPW, instrumental variables, difference-in-differences, and structural equation modeling.</p>
+        <p>Before graduate school I worked in applied research at Viable Knowledge Masters, STREAM Insight, and Ipsos Nigeria, designing surveys, training field teams, and managing research for funders including Global Affairs Canada, the Ford Foundation, UNICEF, and the Gates Foundation. I am a Global Burden of Disease collaborator.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="sec-head"><span class="label">Research</span><h2>Two regions, one set of questions</h2></div>
+    <div class="sec-body">
+      <div class="aside"></div>
+      <div class="main" style="display:flex;flex-direction:column;gap:2rem">
+        <div class="diss">
+          <p class="label" style="color:var(--accent-2)">Dissertation · defending 2026</p>
+          <h3 style="margin-top:.4rem">Firearm access and secured storage among older men in the United States</h3>
+          <p>Uses the Behavioral Risk Factor Surveillance System to examine which older men have access to firearms at home and whether those firearms are stored securely. The project draws on life course and precarious manhood perspectives, uses DAG-based causal modeling, and links individual survey responses to state policy and political context.</p>
+          <div class="meta"><span>Data: BRFSS 2021–2024</span><span>Methods: DAGs · survey-weighted margins · multiple imputation</span></div>
+        </div>
+        <div class="two">
+          <article class="stream">
+            <p class="label">Sub-Saharan Africa</p>
+            <h3>Gender, violence &amp; reproductive health</h3>
+            <ul>
+              <li>Intimate partner and sexual violence, including technology-facilitated violence</li>
+              <li>Women's empowerment, contraception, and high-risk fertility</li>
+              <li>Maternal, child, and sexual health; female genital mutilation</li>
+            </ul>
+            <div class="tags"><span class="tag">DHS</span><span class="tag">multilevel models</span><span class="tag">IV / 2SLS</span></div>
+          </article>
+          <article class="stream">
+            <p class="label">United States</p>
+            <h3>Population health &amp; inequality</h3>
+            <ul>
+              <li>Firearm access and safe storage</li>
+              <li>Discrimination and vigilance among immigrants</li>
+              <li>Community violence and use of public space</li>
+            </ul>
+            <div class="tags"><span class="tag">BRFSS</span><span class="tag">NHIS</span><span class="tag">SEM</span><span class="tag">DiD</span></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="talks">
+    <div class="sec-head"><span class="label">Recent work</span><h2>New findings, presented at SDA</h2></div>
+    <div class="sec-body">
+      <div class="aside"></div>
+      <div class="main">
+        <article class="talk">
+          <div>
+            <p class="label">Nigeria · 2023–24 DHS · women aged 15–49</p>
+            <h3 style="margin-top:.4rem">Are victims of sexual violence more likely to experience technology-facilitated gender-based violence, or is it the other way around?</h3>
+            <p class="venue">Southern Demographic Association · with O. A. Makinde, D. Lucy, B. O. Muheeb, M.-E. Bolorunduro, O. A. Jegede</p>
+            <p class="q">One of the first studies of what predicts technology-facilitated gender-based violence (TFGBV) in Nigeria, and whether it travels with sexual violence. Framed by lifestyle and routine activities theory.</p>
+            <p class="note"><a class="code-link" href="https://github.com/DaveIpsos/TFGBV">Code: DaveIpsos/TFGBV</a></p>
+          </div>
+          <div class="findings">
+            <p class="label">What we found</p>
+            <div class="find"><span class="n">1.6%<small>prevalence</small></span><span>of women reported lifetime TFGBV, such as threatening messages or non-consensual sharing of sexual images.</span></div>
+            <div class="find"><span class="n">+9 pp<small>95% CI 3–15</small></span><span>higher probability of recent TFGBV among women who had ever experienced sexual violence, after entropy balancing.</span></div>
+            <div class="find"><span class="n">↔</span><span>Instrumental-variable models suggest the association runs in both directions between sexual violence and TFGBV.</span></div>
+            <p class="note">Implication: services for sexual violence and digital-safety policy need to be designed together.</p>
+          </div>
+        </article>
+        <article class="talk">
+          <div>
+            <p class="label">United States · 2023 NHIS · foreign-born adults</p>
+            <h3 style="margin-top:.4rem">Race-ethnic differences in perceived discrimination and vigilance among foreign-born adults</h3>
+            <p class="venue">Southern Demographic Association · with T. Asitibasi, T. Agoben, O. Oluwasanmi, O. Ogundele</p>
+            <p class="q">Immigrants are not one group. We compared everyday discrimination and vigilance across Hispanic, Black, Asian, and White foreign-born adults, and tested whether discrimination explains differences in vigilance.</p>
+            <p class="note"><a class="code-link" href="https://github.com/DaveIpsos/Racial-Discrimination">Code: DaveIpsos/Racial-Discrimination</a></p>
+          </div>
+          <div class="findings">
+            <p class="label">What we found · vs. foreign-born NH White</p>
+            <div class="find"><span class="n">+0.31 SD<small>discrimination</small></span><span>Foreign-born Black adults reported more everyday discrimination.</span></div>
+            <div class="find"><span class="n">+0.33 SD<small>vigilance</small></span><span>They also reported more vigilance, and discrimination accounted for most of that gap (partial mediation, about 75%).</span></div>
+            <div class="find"><span class="n">−0.19 SD<small>discrimination</small></span><span>Foreign-born Hispanic adults reported less discrimination, with similar vigilance.</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="sec-head"><span class="label">Publications</span><h2>Peer-reviewed articles</h2></div>
+    <div class="sec-body">
+      <div class="aside"></div>
+      <div class="main">
+        <div class="filters" id="filters" role="group" aria-label="Filter by topic"></div>
+        <ol class="pubs" id="pubs"></ol>
+
+        <h3 class="sub">Under review &amp; in preparation</h3>
+        <ol class="pubs">
+          <li><span class="yr">—</span><div><p class="pt">Reducing complex survey data to subpopulations while preserving design-based inference: The svyslim package</p><p class="pa"><b>Okunlola, D. A.</b></p><p class="pj"><i>Stata Journal</i> <span class="badge">under review</span></p></div></li>
+          <li><span class="yr">—</span><div><p class="pt">Empowerment dimensions and multiple high-risk births among married women in Northern Nigeria</p><p class="pa"><b>Okunlola, D. A.</b>, McFarland, M. J., &amp; Taylor, J.</p><p class="pj"><i>Journal of Adolescence and Youth</i> <span class="badge">under review</span></p></div></li>
+          <li><span class="yr">—</span><div><p class="pt">Connected burdens through racial identities: Racial differences in perceived discrimination and vigilance among immigrants in the United States</p><p class="pa"><b>Okunlola, D. A.</b></p><p class="pj"><i>Journal of Race and Social Problems</i> <span class="badge">under review</span></p></div></li>
+          <li><span class="yr">—</span><div><p class="pt">Are women victims of sexual violence more likely to experience technology-facilitated gender-based violence, or is it the other way around?</p><p class="pa"><b>Okunlola, D. A.</b> et al.</p><p class="pj">Evidence from the 2023 Nigeria DHS <span class="badge">in preparation</span></p></div></li>
+          <li><span class="yr">—</span><div><p class="pt">Artificial intelligence as a tool of domestic violence: Regional patterns and policy gaps in sub-Saharan Africa</p><p class="pa"><b>Okunlola, D. A.</b></p><p class="pj">Book chapter <span class="badge">in preparation</span></p></div></li>
+        </ol>
+
+        <h3 class="sub">Book chapter</h3>
+        <ol class="pubs">
+          <li><span class="yr">2023</span><div><p class="pt">Emergency healthcare accessibility in the context of COVID-19 in Nigeria</p><p class="pa">Adetutu, O. M., <b>Okunlola, D. A.</b>, Ijisakin, A. P., Hammed, S. A., &amp; Ogunsanya, Y. S.</p><p class="pj">In <i>African Development and Global Engagements: Policy, Climate Change, and COVID-19</i> (pp. 65–81). Springer.</p></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="software">
+    <div class="sec-head"><span class="label">Software &amp; code</span><h2>Tools for survey data</h2></div>
+    <div class="sec-body">
+      <div class="aside"></div>
+      <div class="main">
+        <div class="repos">
+          <a class="repo feature" href="https://github.com/DaveIpsos/SVYSLIM" style="text-decoration:none;color:inherit">
+            <span class="rn">svyslim</span>
+            <p style="color:var(--ink)">A Stata package that reduces large pooled complex surveys to the subpopulation you need while keeping the design information required for correct variance estimation. Companion package <span style="font-family:var(--f-mono)">svysub</span> handles related subpopulation estimation problems.</p>
+            <span class="lang">Stata · manuscript under review at the Stata Journal</span>
+          </a>
+          <a class="repo" href="https://github.com/DaveIpsos/TFGBV" style="text-decoration:none;color:inherit"><span class="rn">TFGBV</span><p>Replication code: technology-facilitated gender-based violence in Nigeria.</p><span class="lang">Stata</span></a>
+          <a class="repo" href="https://github.com/DaveIpsos/Racial-Discrimination" style="text-decoration:none;color:inherit"><span class="rn">Racial-Discrimination</span><p>Replication code: discrimination and vigilance among foreign-born adults.</p><span class="lang">Stata</span></a>
+          <a class="repo" href="https://github.com/DaveIpsos/Women_Empowerment_Fertility" style="text-decoration:none;color:inherit"><span class="rn">Women_Empowerment_Fertility</span><p>Empowerment indicators and high-risk fertility among married adolescent girls in Northern Nigeria.</p><span class="lang">Stata</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="teaching">
+    <div class="sec-head"><span class="label">Teaching &amp; training</span><h2>In the classroom</h2></div>
+    <div class="sec-body">
+      <div class="aside"></div>
+      <div class="main cols">
+        <div>
+          <h3>Instructor of record</h3>
+          <dl class="rows">
+            <dt>Summer 2026</dt><dd>SYA 4400 Social Statistics</dd>
+            <dt>Fall 2025</dt><dd>SYD 3020 Population and Society</dd>
+            <dt>Summer 2024</dt><dd>SYA 4400 Social Statistics</dd>
+          </dl>
+          <h3 style="margin-top:1.6rem">Teaching assistant</h3>
+          <dl class="rows">
+            <dt>Spring 2026</dt><dd>SYA 5406 Multivariate Analysis; SYO 4402 Medical Sociology</dd>
+            <dt>2022–2024</dt><dd>Social Problems; Introductory Sociology; Population and Society</dd>
+          </dl>
+        </div>
+        <div>
+          <h3>Advanced methods training</h3>
+          <dl class="rows">
+            <dt>2026</dt><dd>Causal Inference: An SEM Approach <span>· ICPSR</span></dd>
+            <dt>2025</dt><dd>Digital and Computational Demography <span>· Max Planck Institute for Demographic Research</span></dd>
+            <dt>2024</dt><dd>Formal Demography Workshop <span>· UC Berkeley</span></dd>
+            <dt>2024</dt><dd>Causal Inference for Multilevel Data <span>· Stephen Raudenbush</span></dd>
+            <dt>2023</dt><dd>Causal Inference <span>· Scott Cunningham</span>; Missing Data <span>· Paul Allison</span></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="recognition">
+    <div class="sec-head"><span class="label">Recognition</span><h2>Awards &amp; fellowships</h2></div>
+    <div class="sec-body">
+      <div class="aside"></div>
+      <div class="main">
+        <dl class="rows">
+          <dt>2026–2027</dt><dd>Adelaide D. Wilson Graduate Student Success Fund Scholarship</dd>
+          <dt>2024–2025</dt><dd><a href="https://www.mcgill.ca/cand3/our-people/fellows-2024-25">CAnD3 Fellowship</a>, McGill University <span>· First runner-up, Dragon's Den visualization competition</span></dd>
+          <dt>2024</dt><dd>Klar Graduate Student Paper Award, Florida State University</dd>
+          <dt>2023–2025</dt><dd>Adelaide D. Wilson Graduate Student Success Fund Scholarship</dd>
+          <dt>2022</dt><dd>Legacy Fellowship, Florida State University</dd>
+          <dt>2021</dt><dd>Co-PI, ALIGN/ODI grant on gender-based violence in Nigeria's ICT sector <span>· Global Affairs Canada &amp; Ford Foundation</span></dd>
+        </dl>
+        <p class="note" style="margin-top:1.4rem">Reviewer for PLOS ONE, BMC Public Health, Journal of Population Research, Population Research and Policy Review, Journal of International Migration and Integration, and Scientific African. Member of PAA, ASA, and IUSSP.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="sec-head"><span class="label">Contact</span><h2>Get in touch</h2></div>
+    <div class="sec-body">
+      <div class="aside"></div>
+      <div class="main contact">
+        <div><span class="label">University</span><span class="email" id="e1">dao22@fsu.edu</span><button class="copy" data-copy="e1" type="button">Copy</button></div>
+        <div><span class="label">Personal</span><span class="email" id="e2">okunloladavid4@gmail.com</span><button class="copy" data-copy="e2" type="button">Copy</button></div>
+        <div><span class="label">Location</span>Department of Sociology, Florida State University, Tallahassee, FL</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 David A. Okunlola · Updated October 2026</footer>
+</div>
+
+<script>
+const ME = "Okunlola, D. A.";
+const TOPICS = {gbv:"Violence & gender", srh:"Sexual & reproductive health", mch:"Maternal & child health", pop:"Population & social demography"};
+const PUBS = [
+ {y:2026,t:"Global, regional, and national burden of HIV/AIDS, 1990–2023, with the estimated burden attributable to intimate partner violence and forecasted impacts of funding cuts through 2030: Results from the Global Burden of Disease Study 2023",a:"Carter, A., Zhang, M., Trejo, B. G., … GBD 2023 HIV Collaborators, incl. Okunlola, D. A.",j:"The Lancet HIV",k:["srh","gbv"]},
+ {y:2025,t:"Sexual behaviors and self-reported sexually transmitted infections among male and female youths in Nigeria",a:"Okunlola, D. A., Alawode, O. A., Opara, C. V., & Ajayi, A. I.",j:"BMC Infectious Diseases, 25(1), 1–13",k:["srh"]},
+ {y:2024,t:"Multilevel correlates of the severity of intimate partner violence among women in Nigeria: Evidence from the 2018 Nigeria Demographic and Health Survey",a:"Okunlola, D. A.",j:"Journal of Population Research, 42, 3",k:["gbv"]},
+ {y:2024,t:"Social capital and postpartum antiretroviral therapy adherence among women living with HIV in the Eastern Cape, South Africa",a:"Adeleye, K. K., Owolabi, E. O., Adeniyi, O. V., Okunlola, D. A., & Ajayi, A. I.",j:"African Journal of AIDS Research, 1–9",k:["mch","srh"]},
+ {y:2024,t:"Gender-based violence in the information and communications technology industry in Nigeria",a:"Abdulaziz, B., Okunlola, D. A., Awoyemi, O. P., & Makinde, O. A.",j:"Gender and Behaviour, 22(2), 22633–22643",k:["gbv"]},
+ {y:2024,t:"Exposure to family planning messages, feminization of contraception, and the tendency to stigmatize female contraceptive users among partnered men in Northern Nigeria",a:"Okunlola, D. A., Ilesanmi, B. B., Kierian, E. U., & Awoleye, A. F.",j:"The Journal of Men's Studies",k:["srh"]},
+ {y:2024,t:"Duration of marriage and the likelihood of spousal violence among involuntarily childless women in Nigeria: Evidence from a national survey",a:"Okunlola, D. A., Adeleye, K., & Ogundele, O. M.",j:"Socius, 10",k:["gbv"]},
+ {y:2024,t:"Contextual determinants of the generational continuation of female genital mutilation among women of reproductive age in Nigeria",a:"Oni, T. O., & Okunlola, D. A.",j:"Reproductive Health, 21, 39",k:["gbv","srh"]},
+ {y:2023,t:"Exposure to parental violence and self-reported sexual violence among unpartnered adolescent girls in Nigeria: Evidence from a national survey",a:"Okunlola, D. A., Alawode, O. A., Jegede, O. T., & Adeleye, K.",j:"International Journal of Sexual Health, 1–12",k:["gbv"]},
+ {y:2023,t:"Internet use, exposure to digital family planning messages, and sexual agency among partnered women in Northern Nigeria: Implications for digital family planning intervention",a:"Okunlola, D. A., Alawode, O. A., Awoleye, A. F., & Ilesanmi, B. B.",j:"Sexual and Reproductive Health Matters, 31(4), 2261681",k:["srh"]},
+ {y:2023,t:"COVID-19 challenges and pregnancy desire among married or in-union women in Kano and Lagos States, Nigeria",a:"Okunlola, D. A., & Makinde, O. A.",j:"Development Southern Africa, 1–14",k:["srh","pop"]},
+ {y:2023,t:"Mother's education and nutritional status as correlates of child stunting, wasting, underweight, and overweight in Nigeria",a:"Lawal, S. A., Okunlola, D. A., Adegboye, O. A., & Adedeji, I. A.",j:"Nutrition and Health",k:["mch"]},
+ {y:2022,t:"Women's and male partners' socio-demographic and economic characteristics associated with contraceptive decision-making in Nigeria",a:"Okunlola, D. A.",j:"BMC Women's Health, 22(1), 1–16",k:["srh"]},
+ {y:2022,t:"Rural-urban differentials in the relationship between household wealth index and maternal anemia status in Nigeria",a:"Awoleye, A. F., Alawode, O. A., Chima, V., Okunlola, D. A., & Obiesie, S.",j:"Health Care for Women International, 1–16",k:["mch"]},
+ {y:2022,t:"Exploring the hierarchies: Multilevel correlates of child mortality in Nigeria and implications for interventions",a:"Okunlola, D. A., Alawode, O. A., Awoleye, A. F., & Adegboye, O.",j:"Global Social Welfare, 1–9",k:["mch","pop"]},
+ {y:2022,t:"Socio-economic correlates of marital status and marriage timing among adult men in Nigeria",a:"Okunlola, D. A., Makinde, O. A., & Babalola, S.",j:"Journal of Family Issues",k:["pop"],u:"https://doi.org/10.1177/0192513X211059828"},
+ {y:2021,t:"Examining the influence of intimate partner violence on fertility planning status among couples: Evidence from the 2018 Nigeria Demographic and Health Survey",a:"Oni, T., Okunlola, D. A., & Oladele, O. I.",j:"Journal of Population and Social Studies, 29",k:["gbv","srh"]},
+ {y:2020,t:"Determinants of non-participation in the labor force among women of reproductive age in Nigeria",a:"Okunlola, D. A., Bolarinwa, O. A., Alawode, O. A., & Adetutu, O. M.",j:"African Population Studies, 34(2)",k:["pop"]},
+ {y:2020,t:"Socio-demographic, economic, and psychological correlates of risky sexual behavior among sexually active young people in Nigeria",a:"Okunlola, D. A., Alawode, O. A., Bolarinwa, O. A., Agbeja, I. O., & Awoleye, A. F.",j:"Global Journal of Health Science, 12(8), 1–9",k:["srh"]},
+ {y:2018,t:"Demographic assessment and adjustment of census age distribution in selected West African countries",a:"Njoku, O. E., Okunlola, D. A., & Adedini, S. A.",j:"African Population Studies, 32(3)",k:["pop"]}
+];
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+let active = "all";
+function render(){
+  const list = document.getElementById("pubs");
+  const rows = PUBS.filter(p => active==="all" || p.k.includes(active));
+  list.innerHTML = rows.map(p => {
+    const title = p.u ? `<a href="${p.u}">${esc(p.t)}</a>` : esc(p.t);
+    const [jn, ...rest] = p.j.split(/,(.+)/);
+    return `<li><span class="yr">${p.y}</span><div><p class="pt">${title}</p><p class="pa">${esc(p.a).replace(ME,"<b>"+ME+"</b>")}</p><p class="pj"><i>${esc(jn)}</i>${rest[0]?","+esc(rest[0]):""}</p></div></li>`;
+  }).join("");
+  document.querySelectorAll("#filters button").forEach(b => b.setAttribute("aria-pressed", b.dataset.k===active ? "true":"false"));
+}
+const f = document.getElementById("filters");
+const count = k => k==="all" ? PUBS.length : PUBS.filter(p=>p.k.includes(k)).length;
+f.innerHTML = [["all","All"],...Object.entries(TOPICS)].map(([k,l]) => `<button type="button" data-k="${k}">${l}<span class="c">${count(k)}</span></button>`).join("");
+f.addEventListener("click", e => { const b = e.target.closest("button"); if(!b) return; active = b.dataset.k; render(); });
+render();
+
+document.querySelectorAll(".copy").forEach(btn => btn.addEventListener("click", () => {
+  const el = document.getElementById(btn.dataset.copy);
+  const done = () => { btn.textContent = "Copied"; setTimeout(()=>btn.textContent="Copy",1500); };
+  try { navigator.clipboard.writeText(el.textContent).then(done, () => selectText(el)); } catch(e){ selectText(el); }
+}));
+function selectText(el){ const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+</script>
