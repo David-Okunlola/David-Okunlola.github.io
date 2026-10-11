@@ -127,6 +127,29 @@ dl.rows dd span{color:var(--muted)}
 .cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2.5rem}
 .cols h3{font-size:1.15rem;margin-bottom:.9rem}
 
+.datasets{margin-top:2rem}
+.datasets ul{list-style:none;margin:.7rem 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.45rem 1.5rem;font-size:.88rem;color:var(--muted)}
+.datasets li{display:flex;gap:.6rem;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:.4rem;min-width:0}
+.datasets b{font-family:var(--f-mono);font-size:.78rem;font-weight:500;color:var(--accent);min-width:6.2rem}
+.seeking{margin-top:1.75rem;padding:1rem 1.2rem;background:var(--accent-soft);border-radius:6px;max-width:42rem}
+.seeking p:last-child{margin-top:.35rem;font-size:.95rem}
+
+/* cand3 */
+.goals{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin-bottom:2rem}
+.goal{border-top:2px solid var(--accent);padding-top:.6rem;font-size:.88rem;min-width:0}
+.goal .label{display:block;margin-bottom:.25rem}
+.port{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:2rem;padding-block:1.6rem;border-top:1px solid var(--rule)}
+.port h3{font-size:1.25rem;margin-top:.35rem}
+.port .venue{margin-top:.45rem;font-size:.85rem;color:var(--muted)}
+.port p.q{margin-top:.7rem;font-size:.95rem}
+.award{display:inline-block;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-2);border:1px solid var(--accent-2);border-radius:3px;padding:.1rem .45rem}
+.btns{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.btns a{font-size:.82rem;text-decoration:none;border:1px solid var(--rule);background:var(--surface);color:var(--ink);padding:.3rem .75rem;border-radius:999px}
+.btns a:hover{border-color:var(--accent);color:var(--accent)}
+.mini{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1rem 1.1rem;min-width:0}
+.mini svg{width:100%;height:auto;display:block}
+.mini .cap{font-size:.78rem;color:var(--muted);margin-top:.5rem}
+@media (max-width:820px){.goals{grid-template-columns:repeat(2,minmax(0,1fr))}.port{grid-template-columns:1fr;gap:1.2rem}}
 .contact{display:flex;flex-wrap:wrap;gap:1rem 2.5rem;font-size:.95rem}
 .contact .label{display:block;margin-bottom:.2rem}
 .email{font-family:var(--f-mono);font-size:.9rem;user-select:all}
@@ -155,6 +178,7 @@ footer{padding-block:2rem 3rem;border-top:1px solid var(--rule);font-size:.8rem;
     <a class="l" href="#talks">Recent work</a>
     <a class="l" href="#publications">Publications</a>
     <a class="l" href="#software">Software</a>
+    <a class="l" href="#cand3">CAnD3</a>
     <a class="l" href="#teaching">Teaching</a>
     <a class="l" href="#contact">Contact</a>
   </div>
@@ -163,10 +187,10 @@ footer{padding-block:2rem 3rem;border-top:1px solid var(--rule);font-size:.8rem;
 <div class="wrap" id="top">
   <header class="hero">
     <div>
-      <p class="label">Sociology · Demography track · Florida State University</p>
+      <p class="label">Demography · Florida State University</p>
       <h1 style="margin-top:.6rem">David A. Okunlola</h1>
-      <p class="role">Ph.D. candidate in Sociology (ABD). Causal demographer working with complex national surveys in the United States and sub-Saharan Africa.</p>
-      <p class="thesis">I study how <em>violence, gender, and inequality</em> shape population health, using causal inference methods built for survey data.</p>
+      <p class="role">Quantitative social scientist and PhD candidate in Demography, with 15+ peer-reviewed publications and extensive experience analyzing large, complex survey and population-health data.</p>
+      <p class="thesis">I turn complex data into <em>credible, decision-relevant evidence</em> on population health, health disparities, and violence.</p>
       <div class="links">
         <a class="primary" href="https://sites.google.com/view/david-a-okunlola/cv">Curriculum vitae</a>
         <a href="https://scholar.google.com/citations?user=gsotYp0AAAAJ&amp;hl=en">Google Scholar</a>
@@ -200,13 +224,35 @@ footer{padding-block:2rem 3rem;border-top:1px solid var(--rule);font-size:.8rem;
   </header>
 
   <section id="about">
-    <div class="sec-head"><span class="label">About</span><h2>Population health, measured carefully</h2></div>
+    <div class="sec-head"><span class="label">About</span><h2>From research question to credible evidence</h2></div>
     <div class="sec-body">
       <div class="aside"></div>
-      <div class="main prose">
-        <p>I am a doctoral candidate in the Department of Sociology at Florida State University, in the demography track. I trained in Demography and Social Statistics at Obafemi Awolowo University, Nigeria (B.Sc., M.Sc.) and earned an M.S. in Sociology at FSU in 2024.</p>
-        <p>My work runs along two lines. In sub-Saharan Africa, I study gender-based violence, reproductive autonomy, and maternal and child health using Demographic and Health Surveys. In the United States, I study population health and firearm access using national surveys such as BRFSS and NHIS. Across both, I focus on design-based inference and causal methods: entropy balancing, AIPW, instrumental variables, difference-in-differences, and structural equation modeling.</p>
-        <p>Before graduate school I worked in applied research at Viable Knowledge Masters, STREAM Insight, and Ipsos Nigeria, designing surveys, training field teams, and managing research for funders including Global Affairs Canada, the Ford Foundation, UNICEF, and the Gates Foundation. I am a Global Burden of Disease collaborator.</p>
+      <div class="main">
+        <div class="prose">
+          <p>I am a quantitative social scientist and PhD candidate in Demography at Florida State University, with 15+ peer-reviewed publications and extensive experience analyzing large, complex survey and population-health datasets.</p>
+          <p>I specialize in applied quantitative research using Stata and R, with experience in complex survey analysis, survey-weighted estimation, multilevel modeling, multiple imputation, structural equation modeling, longitudinal and observational data analysis, and causal inference methods.</p>
+          <p>My research spans population health, health disparities, reproductive and maternal health, gender-based and intimate partner violence, injury prevention, migration, and social inequality. I am comfortable taking projects from research question and study design through data preparation, statistical analysis, interpretation, and dissemination.</p>
+          <p>What I bring to a team is the ability to turn complex data into credible, decision-relevant evidence. I can develop analytical strategies, clean and manage large datasets, apply appropriate statistical methods, account for survey design and missing data, produce reproducible analyses, and communicate findings clearly to technical and non-technical audiences.</p>
+        </div>
+        <div class="datasets">
+          <p class="label">Nationally representative data I work with</p>
+          <ul>
+            <li><b>NHIS</b> National Health Interview Survey</li>
+            <li><b>BRFSS</b> Behavioral Risk Factor Surveillance System</li>
+            <li><b>ACS</b> American Community Survey</li>
+            <li><b>CDC WONDER</b> Mortality and population data</li>
+            <li><b>DHS</b> Demographic and Health Surveys</li>
+            <li><b>MICS</b> Multiple Indicator Cluster Surveys</li>
+            <li><b>PMA</b> Performance Monitoring for Action</li>
+            <li><b>Afrobarometer</b> Public attitude surveys, Africa</li>
+            <li><b>UNHCR FDS</b> Forced Displacement Survey</li>
+            <li><b>LFS</b> Canada Labour Force Survey</li>
+          </ul>
+        </div>
+        <div class="seeking">
+          <p class="label">Open to</p>
+          <p>Applied research roles in population and public health, health services and outcomes research, survey research, program evaluation, policy research, and social and behavioral research.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -332,6 +378,73 @@ footer{padding-block:2rem 3rem;border-top:1px solid var(--rule);font-size:.8rem;
     </div>
   </section>
 
+  <section id="cand3">
+    <div class="sec-head"><span class="label">CAnD3 Fellowship · 2024–25</span><h2>Portfolio from the CAnD3 program</h2></div>
+    <div class="sec-body">
+      <div class="aside"></div>
+      <div class="main">
+        <div class="prose" style="margin-bottom:1.6rem">
+          <p>I was a 2024–25 fellow of the <a href="https://www.mcgill.ca/cand3/our-people/fellows-2024-25">Consortium on Analytics for Data-Driven Decision-Making (CAnD3)</a> at McGill University, a training program in population data analytics for researchers and decision-makers. The work below was produced during the fellowship.</p>
+        </div>
+        <div class="goals">
+          <div class="goal"><span class="label">Goal 1</span>Estimate causal effects using the DAG framework</div>
+          <div class="goal"><span class="label">Goal 2</span>Data visualization and presentation in R</div>
+          <div class="goal"><span class="label">Goal 3</span>Open science and reproducibility with GitHub</div>
+          <div class="goal"><span class="label">Goal 4</span>Interdisciplinary partnerships with other fellows</div>
+        </div>
+
+        <article class="port">
+          <div>
+            <span class="award">First runner-up · Dragon's Den</span>
+            <h3>The pandemic's hidden toll: Five leading causes of death among younger Americans before, during, and after COVID-19</h3>
+            <p class="venue">Dragon's Den visualization competition · CAnD3-funded</p>
+            <p class="q">A visual pitch tracking death rates from the five leading causes among younger people in the United States, 2013–2023, with a forecast built on the 1981–2023 series.</p>
+            <div class="btns"><a href="https://drive.google.com/file/d/1cGQ5mwIC0adEU5hSQypZ8KgQXy2aFBKz/view">View slides</a></div>
+          </div>
+          <div class="findings">
+            <p class="label">What the charts show</p>
+            <div class="find"><span class="n">pre-2020<small>stable</small></span><span>Death rates from the five leading causes fluctuated but held steady before the pandemic.</span></div>
+            <div class="find"><span class="n">2020–21<small>increase</small></span><span>Rates rose sharply during the first two years of COVID-19.</span></div>
+            <div class="find"><span class="n">post-2021<small>decline</small></span><span>Rates decreased gradually afterward. The forecast asks where they will be ten years after 2023.</span></div>
+          </div>
+        </article>
+
+        <article class="port">
+          <div>
+            <span class="label">Group project · IDEA report</span>
+            <h3>Labor outcomes by sex and migration status in Canada</h3>
+            <p class="venue">With Moustapha Touré, Camila Iciaszczyk, and Jordan Katz</p>
+            <p class="q">Using the 2025 Canadian Labour Force Survey, we asked whether the gender gap in employment and full-time work differs for recent immigrants, long-term immigrants, and the Canadian-born. Survey-weighted descriptives, then logistic regression with predicted probabilities from Stata's margins.</p>
+            <div class="btns"><a href="https://drive.google.com/file/d/15MRUXRZ7QTor3PfI7ISWbdnExClMl8B3/view">Read the report</a></div>
+          </div>
+          <div class="findings">
+            <p class="label">Predicted probabilities</p>
+            <div class="find"><span class="n">0.87 vs 0.69<small>full-time</small></span><span>Recent immigrant men had the highest probability of full-time work; recent immigrant women had the lowest.</span></div>
+            <div class="find"><span class="n">0.92 = 0.92<small>employment</small></span><span>Among long-term immigrants, men and women had nearly identical employment probabilities.</span></div>
+            <div class="find"><span class="n">0.94 vs 0.92<small>employment</small></span><span>Among the Canadian-born, women's employment probability was slightly higher than men's.</span></div>
+            <p class="note">Policy levers: language training for recent immigrant women, subsidized childcare, and faster foreign-credential recognition.</p>
+          </div>
+        </article>
+
+        <article class="port">
+          <div>
+            <span class="label">Final presentation</span>
+            <h3>Canada's crime rate is associated with US mortality: A spurious correlation?</h3>
+            <p class="venue">CAnD3 final presentation</p>
+            <p class="q">A deliberately provocative exercise in causal reasoning. Two unrelated national time series move together strongly, which is exactly why correlation alone cannot carry a causal claim. The point is to show why a DAG and a theory of the mechanism come first.</p>
+            <div class="btns"><a href="https://drive.google.com/file/d/1BCvd0mDOISrWnwUKKk4BRORpRiYGeQrh/view">View slides</a></div>
+          </div>
+          <div class="findings">
+            <p class="label">The correlations</p>
+            <div class="find"><span class="n">r = −0.67<small>p = 0.0001</small></span><span>Canada's crime rate and US life expectancy.</span></div>
+            <div class="find"><span class="n">r = +0.67<small>p = 0.0001</small></span><span>Canada's crime rate and US death rates.</span></div>
+            <p class="note">Shared time trends, not a causal link, are the likely explanation.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section id="teaching">
     <div class="sec-head"><span class="label">Teaching &amp; training</span><h2>In the classroom</h2></div>
     <div class="sec-body">
@@ -371,7 +484,7 @@ footer{padding-block:2rem 3rem;border-top:1px solid var(--rule);font-size:.8rem;
       <div class="main">
         <dl class="rows">
           <dt>2026–2027</dt><dd>Adelaide D. Wilson Graduate Student Success Fund Scholarship</dd>
-          <dt>2024–2025</dt><dd><a href="https://www.mcgill.ca/cand3/our-people/fellows-2024-25">CAnD3 Fellowship</a>, McGill University <span>· First runner-up, Dragon's Den visualization competition</span></dd>
+          <dt>2024–2025</dt><dd><a href="#cand3">CAnD3 Fellowship</a>, McGill University <span>· First runner-up, Dragon's Den visualization competition</span></dd>
           <dt>2024</dt><dd>Klar Graduate Student Paper Award, Florida State University</dd>
           <dt>2023–2025</dt><dd>Adelaide D. Wilson Graduate Student Success Fund Scholarship</dd>
           <dt>2022</dt><dd>Legacy Fellowship, Florida State University</dd>
